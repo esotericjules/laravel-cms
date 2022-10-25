@@ -41,7 +41,7 @@
             <label for="image">Image</label>
             <input type="file" class="form-control" id="image" name="image">
         </div>
-        <div class="form-group">
+        <div class="form-grou mt-3">
             <label for="category">Category</label>
             <select name="category" id="category" class="form-control">
                 @foreach($categories as $category)
@@ -57,6 +57,26 @@
                 @endforeach
             </select>
         </div>
+        @if ($tags->count() > 0)
+        <div class="form-group mt-3">
+            <label for="tags">Tags</label>
+           <select name="tags[]" id="tags" class="form-control" multiple>
+            @foreach ($tags as $tag)
+            <option value="{{$tag->id}}"
+                @if(isset($post))
+                @if($post->hasTag($tag->id))
+                selected
+                @endif
+                @endif
+    >
+              {{ $tag->name }}
+              
+           </option>
+            @endforeach
+           </select>
+        </div>
+        @endif
+
         <div class="form-group mt-3">
             <button class="btn btn-success" type="submit">{{isset($post) ? 'Update Post' : 'Create Post'}}</button>
         </div>

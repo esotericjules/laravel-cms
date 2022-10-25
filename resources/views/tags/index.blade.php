@@ -20,8 +20,7 @@
           <tr>
               <td>{{ $tag->name}}</td>
               <td>
-                0
-                {{-- {{$tag->post->count()}} --}}
+                {{$tag->posts->count()}}
               </td>
               <td>
                   <button class="btn btn-danger btn-sm float-end" onclick="handleDelete({{ $tag->id }})"> Delete </button> 
