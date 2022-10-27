@@ -28,3 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('trashed-posts', 'App\Http\Controllers\PostController@trashed')->name('trashed-posts.index');
     Route::put('restore-post/{post}', 'App\Http\Controllers\PostController@restore')->name('restore-posts');
 });
+
+Route::middleware(['auth', 'verifyIsAdmin'])->group(function () {
+    Route::get('users', 'App\Http\Controllers\UsersController@index')->name('users.index');
+});
