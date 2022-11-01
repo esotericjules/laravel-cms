@@ -31,4 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'verifyIsAdmin'])->group(function () {
     Route::get('users', 'App\Http\Controllers\UsersController@index')->name('users.index');
+    Route::put('users/profile', 'App\Http\Controllers\UsersController@update')->name('users.update-profile');
+    Route::get('users/profile', 'App\Http\Controllers\UsersController@edit')->name('users.edit-profile');
+    Route::post('users/{user}/make-admin', 'App\Http\Controllers\UsersController@makeAdmin')->name('users.make-admin');
 });
