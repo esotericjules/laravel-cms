@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('image');
             $table->integer('category_id'); //make sure the name of the model is in small letter case, then _id. This is a standard in laravel if you want a relationship between the tables.
-            $table->timestamp('published_at'); //means a blog post can be created without filling in this field.
+            $table->timestamp('published_at')->nullable(); //means a blog post can be created without filling in this field.
             $table->timestamps();
         });
     }
